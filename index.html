@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>JobTracker — Suivi de candidatures</title>
+        <link rel="stylesheet" href="style.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,700;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <header>
+            <div class="header-inner">
+                <div class="logo">Job<em>Tracker</em></div>
+                <div class="view-toggle">
+                    <button
+                        class="view-btn active"
+                        id="vbtn-kanban"
+                        onclick="switchView('kanban')"
+                    >
+                        kanban
+                    </button>
+                    <button
+                        class="view-btn"
+                        id="vbtn-stats"
+                        onclick="switchView('stats')"
+                    >
+                        stats
+                    </button>
+                </div>
+                <div class="header-right">
+                    <button class="btn-add" onclick="openModal()">
+                        + ajouter
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!--STATS RAPIDES-->
+        <div class="stats-bar">
+            <div class="stats-inner">
+                <div class="stat-item">
+                    <span id="s-total">0</span>candidature(s)
+                </div>
+                <div class="stat-item">
+                    <span id="s-total">0</span>entretien(s)
+                </div>
+                <div class="stat-item"><span id="s-total">0</span>offre(s)</div>
+                <div class="stat-item">
+                    <span id="s-total">0</span>relances en retard(s)
+                </div>
+            </div>
+        </div>
+
+        <!--KANBAN-->
+        <div class="view-kanban">
+            <div class="kanban-board">
+                <section class="kanban-col" data-status="spotted">
+                    <div class="col-header">
+                        <span
+                            class="col-dot"
+                            style="background: #3b82f6"
+                        ></span>
+                        <h2 class="col-title">Repéré</h2>
+                        <span class="col-count" id="cnt-spotted">0</span>
+                    </div>
+                    <div
+                        class="col-cards"
+                        id="cards-spotted"
+                        ondragover="onDragOver(event)"
+                        ondrop="onDrop(event, 'spotted')"
+                        ondragleave="onDragLeave(event)"
+                    ></div>
+                </section>
+                <section class="kanban-col" data-status="applied">
+                    <div class="col-header">
+                        <span
+                            class="col-dot"
+                            style="background: #f59e0b"
+                        ></span>
+                        <h2 class="col-title">Postulé</h2>
+                        <span class="col-count" id="cnt-applied">0</span>
+                    </div>
+                    <div
+                        class="col-cards"
+                        id="cards-applied"
+                        ondragover="onDragOver(event)"
+                        ondrop="onDrop(event, 'applied')"
+                        ondragleave="onDragLeave(event)"
+                    ></div>
+                </section>
+                <section class="kanban-col" data-status="interview">
+                    <div class="col-header">
+                        <span
+                            class="col-dot"
+                            style="background: #a855f7"
+                        ></span>
+                        <h2 class="col-title">Entretien</h2>
+                        <span class="col-count" id="cnt-interview">0</span>
+                    </div>
+                    <div
+                        class="col-cards"
+                        id="cards-interview"
+                        ondragover="onDragOver(event)"
+                        ondrop="onDrop(event, 'interview')"
+                        ondragleave="onDragLeave(event)"
+                    ></div>
+                </section>
+                <section class="kanban-col" data-status="offer">
+                    <div class="col-header">
+                        <span
+                            class="col-dot"
+                            style="background: #22c55e"
+                        ></span>
+                        <h2 class="col-title">Offre</h2>
+                        <span class="col-count" id="cnt-offer">0</span>
+                    </div>
+                    <div
+                        class="col-cards"
+                        id="cards-offer"
+                        ondragover="onDragOver(event)"
+                        ondrop="onDrop(event, 'offer')"
+                        ondragleave="onDragLeave(event)"
+                    ></div>
+                </section>
+                <section class="kanban-col" data-status="refused">
+                    <div class="col-header">
+                        <span
+                            class="col-dot"
+                            style="background: #ef4444"
+                        ></span>
+                        <h2 class="col-title">Refus</h2>
+                        <span class="col-count" id="cnt-refused">0</span>
+                    </div>
+                    <div
+                        class="col-cards"
+                        id="cards-refused"
+                        ondragover="onDragOver(event)"
+                        ondrop="onDrop(event, 'refused')"
+                        ondragleave="onDragLeave(event)"
+                    ></div>
+                </section>
+            </div>
+        </div>
+
+        <!--VUE STATS-->
+        <div id="view-stats" hidden>
+            <div id="stats-cards"></div>
+            <div id="funnel-rows"></div>
+            <div id="reminders-list"></div>
+        </div>
+
+        <!--MODAL-->
+        <div id="modal-backdrop" id="modal" role="dialog" aria-modal="true">
+            <div class="modal">
+                <div class="modal-header">
+                    <h2 class="modal-title">Nouvelle candidature</h2>
+                    <button class="modal-close" onclick="closeModal()"></button>
+                </div>
+                <div class="modal-body">
+                    <!--Selecteur de status-->
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label class="form-label">Entreprise *</label
+                            ><input
+                                class="form-input"
+                                id="f-company"
+                                placeholder="Ex: Arkea"
+                            />
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Poste *</label
+                            ><input
+                                class="form-input"
+                                id="f-role"
+                                placeholder="Ex: Dev Full-Stack"
+                            />
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Salaire</label
+                            ><input
+                                class="form-input"
+                                id="f-salary"
+                                placeholder="Ex: 38k-42k€"
+                            />
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Localisation</label
+                            ><input
+                                class="form-input"
+                                id="f-location"
+                                placeholder="Ex: Paris"
+                            />
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Date postulation</label
+                            ><input
+                                class="form-input"
+                                id="f-date"
+                                type="date"
+                            />
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Date de relance</label
+                            ><input
+                                class="form-input"
+                                id="f-reminder"
+                                type="date"
+                            />
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Lien de l'offre</label
+                            ><input
+                                class="form-input"
+                                id="f-url"
+                                type="url"
+                                placeholder="https://..."
+                            />
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Notes</label
+                            ><input
+                                class="form-input"
+                                id="f-note"
+                                placeholder="Impressions, contacts..."
+                            />
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button class="btn-cancel" onclick="closeModal()">
+                            Annuler
+                        </button>
+                        <button class="btn-save" onclick="saveJon()">
+                            Enregistrer
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="toast" id="toast"></div>
+
+        <script src="app.js"></script>
+    </body>
+</html>
