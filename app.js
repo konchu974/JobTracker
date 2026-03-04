@@ -88,9 +88,13 @@ function buildCard(job, idx) {
     ${reminderHTML}
     ${job.notes ? `<div class="card-note-preview">${escHtml(job.notes)}</div>` : ""}
     <div class="card-actions">
-      <button class="card-btn" title="Modifier">Modifier</button>
-      <button class="card-btn del" title="Supprimer">Supprimer</button>
-    </div>`;
+  <button class="card-btn" title="Modifier">
+    <img src="icons/update-svgrepo-com.svg" width="13" height="13">
+  </button>
+  <button class="card-btn del" title="Supprimer">
+    <img src="icons/delete-svgrepo-com.svg" width="13" height="13">
+  </button>
+</div>`;
 
   card.querySelector(".card-btn:not(.del)").onclick = (e) => {
     e.stopPropagation();

@@ -1,0 +1,92 @@
+// ── LAYOUT ────────────────────────────────────
+.app-body {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+// Stats bar rapide
+.stats-bar {
+  background: var(--surf);
+  border-bottom: 1px solid var(--border);
+  padding: 0.75rem 2rem;
+  flex-shrink: 0;
+}
+
+.stats-inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.stat-num   { font-family: var(--mono); font-size: 1rem; font-weight: 600; }
+.stat-label { font-size: 0.72rem; color: var(--muted); font-weight: 500; }
+
+.stat-divider {
+  width: 1px;
+  height: 20px;
+  background: var(--border2);
+}
+
+.rate-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-left: auto;
+}
+
+.rate-label { font-size: 0.72rem; color: var(--muted); }
+
+.rate-track {
+  width: 120px;
+  height: 5px;
+  background: var(--border2);
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.rate-fill {
+  height: 100%;
+  border-radius: 99px;
+  background: linear-gradient(90deg, var(--amber), var(--green));
+  transition: width 0.6s ease;
+}
+
+// Toast
+.toast {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  background: var(--surf3);
+  border: 1px solid var(--border2);
+  border-radius: 8px;
+  padding: 0.6rem 1.2rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  z-index: 1000;
+  opacity: 0;
+  transition: all 0.25s;
+  pointer-events: none;
+
+  &.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+// Responsive
+@media (max-width: 768px) {
+  .stats-bar { padding: 0.75rem 1rem; }
+}

@@ -1,0 +1,40 @@
+// ── VARIABLES ─────────────────────────────────
+:root {
+  // Surfaces
+  --bg: #0b0b0e;
+  --surf: #111116;
+  --surf2: #18181f;
+  --surf3: #1f1f28;
+
+  // Bordures
+  --border: #252530;
+  --border2: #2e2e3c;
+
+  // Texte
+  --text: #f0f0f8;
+  --muted: #5e5e7a;
+  --muted2: #3a3a4e;
+
+  // Couleurs
+  --amber: #f59e0b;
+  --amber2: #d97706;
+  --amber-glow: rgba(245, 158, 11, 0.12);
+  --blue: #3b82f6;
+  --green: #22c55e;
+  --red: #ef4444;
+  --purple: #a855f7;
+  --orange: #f97316;
+
+  // Couleurs colonnes Kanban
+  --col-spotted: #3b82f6;
+  --col-applied: #f59e0b;
+  --col-interview: #a855f7;
+  --col-offer: #22c55e;
+  --col-refused: #ef4444;
+
+  // Typo & misc
+  --radius: 10px;
+  --font: 'Plus Jakarta Sans', sans-serif;
+  --display: 'Fraunces', serif;
+  --mono: 'JetBrains Mono', monospace;
+}

@@ -1,0 +1,119 @@
+// ── JOB CARD ──────────────────────────────────
+.job-card {
+  background: var(--surf2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.85rem;
+  cursor: pointer;
+  transition: all 0.18s;
+  position: relative;
+  user-select: none;
+
+  &:hover {
+    border-color: var(--border2);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    transform: translateY(-1px);
+
+    .card-actions { opacity: 1; }
+  }
+
+  &.dragging { opacity: 0.5; transform: rotate(2deg); }
+}
+
+.card-company {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.25rem;
+}
+
+.card-role {
+  font-size: 0.88rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 0.5rem;
+}
+
+.card-tags {
+  display: flex;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.5rem;
+}
+
+.tag {
+  font-size: 0.63rem;
+  font-weight: 600;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+
+  &-salary { background: rgba(34, 197, 94, 0.1);  color: var(--green); }
+  &-remote  { background: rgba(59, 130, 246, 0.1); color: var(--blue); }
+  &-onsite  { background: rgba(249, 115, 22, 0.1); color: var(--orange); }
+}
+
+.card-date {
+  font-size: 0.66rem;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.card-reminder {
+  margin-top: 0.45rem;
+  font-size: 0.66rem;
+  padding: 0.25rem 0.55rem;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  width: fit-content;
+}
+
+.reminder-ok      { background: rgba(34, 197, 94, 0.08); color: #4ade80; }
+.reminder-soon    { background: rgba(245, 158, 11, 0.1);  color: var(--amber); }
+.reminder-overdue { background: rgba(239, 68, 68, 0.1);   color: var(--red); }
+
+.card-note-preview {
+  font-size: 0.72rem;
+  color: var(--muted);
+  margin-top: 0.4rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 1.4;
+}
+
+.card-actions {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.6rem;
+  display: flex;
+  gap: 0.25rem;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+.card-btn {
+  background: var(--surf3);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.72rem;
+  color: var(--muted);
+  transition: all 0.12s;
+
+  &:hover     { color: var(--text); border-color: var(--border2); }
+  &.del:hover { color: var(--red);  border-color: var(--red); }
+}

@@ -1,0 +1,122 @@
+// ── STATS VIEW ────────────────────────────────
+#view-stats {
+  display: none;
+  flex: 1;
+  overflow-y: auto;
+  padding: 2rem;
+  max-width: 1440px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.stat-card {
+  background: var(--surf);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+}
+
+.stat-card-num {
+  font-family: var(--display);
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 0.25rem;
+}
+
+.stat-card-label {
+  font-size: 0.8rem;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+// Entonnoir
+.funnel-section {
+  background: var(--surf);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.funnel-title { font-weight: 700; font-size: 0.9rem; margin-bottom: 1.25rem; }
+
+.funnel-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.65rem;
+}
+
+.funnel-label { font-size: 0.78rem; font-weight: 600; min-width: 90px; }
+
+.funnel-track {
+  flex: 1;
+  height: 22px;
+  background: var(--surf2);
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+
+.funnel-fill {
+  height: 100%;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  padding-left: 0.5rem;
+  transition: width 0.8s ease;
+
+  span {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: #000;
+    white-space: nowrap;
+  }
+}
+
+.funnel-num {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--muted);
+  min-width: 24px;
+  text-align: right;
+}
+
+// Relances
+.reminders-section {
+  background: var(--surf);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+}
+
+.reminders-title { font-weight: 700; font-size: 0.9rem; margin-bottom: 1rem; }
+
+.reminder-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.65rem 0;
+  border-bottom: 1px solid var(--border);
+
+  &:last-child { border-bottom: none; }
+}
+
+.reminder-dot   { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.reminder-info  { flex: 1; }
+.reminder-company { font-size: 0.72rem; color: var(--muted); font-weight: 600; }
+.reminder-role    { font-size: 0.82rem; font-weight: 600; }
+.reminder-date    { font-family: var(--mono); font-size: 0.7rem; }
+
+@media (max-width: 768px) {
+  #view-stats { padding: 1rem; }
+}
