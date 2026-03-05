@@ -117,3 +117,16 @@
   &:hover     { color: var(--text); border-color: var(--border2); }
   &.del:hover { color: var(--red);  border-color: var(--red); }
 }
+
+.card-custom-tags {
+  display: flex;
+  gap: .3rem;
+  flex-wrap: wrap;
+  margin-top: .35rem;
+}
+
+.tag-custom {
+  background: rgba(244, 114, 182, 0.1);
+  color: #f472b6;
+  border: 1px solid rgba(244, 114, 182, 0.2);
+}

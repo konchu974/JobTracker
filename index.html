@@ -32,6 +32,24 @@
           </button>
         </div>
         <div class="header-right">
+          <button
+            class="btn-export"
+            onclick="exportCSV()"
+            title="Exporter en CSV"
+          >
+            <img src="icons/export-svgrepo-com.svg" width="20" height="20" />
+            Export
+          </button>
+          <label class="btn-import" title="Importer un csv">
+            <img src="icons/import-svgrepo-com.svg" width="20" height="20" />
+            Importe
+            <input
+              type="file"
+              accept=".csv"
+              onchange="importCSV(event)"
+              style="display: none"
+            />
+          </label>
           <button class="btn-add" onclick="openModal()">+ ajouter</button>
         </div>
       </div>
@@ -199,6 +217,24 @@
                 id="f-notes"
                 placeholder="Impressions, contacts..."
               ></textarea>
+            </div>
+            <div class="form-group full">
+              <label class="form-label">Tags</label>
+              <div class="tag-input-area">
+                <div class="tag-selected" id="tag-selected"></div>
+                <div class="tag-input-row">
+                  <input
+                    class="form-input"
+                    id="f-tag-input"
+                    placeholder="Ajouter un tag..."
+                    onkeydown="onTagKeydown(event)"
+                  />
+                  <button class="btn-tag-add" onclick="addTagFromInput()">
+                    +
+                  </button>
+                </div>
+                <div class="tag-suggestions" id="tag-suggestions"></div>
+              </div>
             </div>
           </div>
 

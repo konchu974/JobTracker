@@ -63,10 +63,6 @@ select {
   display: none !important;
 }
 
-::-moz-selection {
-  background: rgba(245, 158, 11, 0.25);
-}
-
 ::selection {
   background: rgba(245, 158, 11, 0.25);
 }
@@ -274,6 +270,31 @@ header {
     padding: 0 1rem;
   }
 }
+.btn-export, .btn-import {
+  background: var(--surf2);
+  color: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.5rem 0.9rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.btn-export:hover {
+  border-color: #34d399;
+  color: #34d399;
+}
+
+.btn-import:hover {
+  border-color: #60a5fa;
+  color: #60a5fa;
+}
+
 #view-kanban {
   display: flex;
   flex: 1;
@@ -378,9 +399,7 @@ header {
   cursor: pointer;
   transition: all 0.18s;
   position: relative;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
+  user-select: none;
 }
 .job-card:hover {
   border-color: var(--border2);
@@ -456,7 +475,6 @@ header {
   display: flex;
   align-items: center;
   gap: 0.3rem;
-  width: -moz-fit-content;
   width: fit-content;
 }
 
@@ -516,6 +534,19 @@ header {
 .card-btn.del:hover {
   color: var(--red);
   border-color: var(--red);
+}
+
+.card-custom-tags {
+  display: flex;
+  gap: 0.3rem;
+  flex-wrap: wrap;
+  margin-top: 0.35rem;
+}
+
+.tag-custom {
+  background: rgba(244, 114, 182, 0.1);
+  color: #f472b6;
+  border: 1px solid rgba(244, 114, 182, 0.2);
 }
 
 .modal-backdrop {
@@ -632,9 +663,6 @@ header {
   border-color: var(--amber);
   box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.1);
 }
-.form-input::-moz-placeholder, .form-select::-moz-placeholder, .form-textarea::-moz-placeholder {
-  color: var(--muted2);
-}
 .form-input::placeholder,
 .form-select::placeholder,
 .form-textarea::placeholder {
@@ -748,6 +776,95 @@ header {
 }
 .btn-save:hover {
   background: var(--amber2);
+}
+
+.tag-input-area {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.tag-selected {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  min-height: 28px;
+}
+
+.tag-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: rgba(244, 114, 182, 0.12);
+  color: #f472b6;
+  border: 1px solid rgba(244, 114, 182, 0.25);
+  border-radius: 4px;
+  font-size: 0.68rem;
+  font-weight: 600;
+  padding: 0.2rem 0.5rem;
+}
+
+.tag-badge button {
+  background: none;
+  border: none;
+  color: inherit;
+  opacity: 0.6;
+  font-size: 0.8rem;
+  padding: 0;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.tag-badge button:hover {
+  opacity: 1;
+}
+
+.tag-input-row {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.tag-input-row .form-input {
+  flex: 1;
+}
+
+.btn-tag-add {
+  background: var(--surf3);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  padding: 0 0.85rem;
+  font-size: 1.1rem;
+  font-weight: 300;
+  transition: all 0.15s;
+}
+
+.btn-tag-add:hover {
+  border-color: #f472b6;
+  color: #f472b6;
+}
+
+.tag-suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.tag-suggestion {
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(--muted);
+  border: 1px dashed var(--border);
+  border-radius: 4px;
+  padding: 0.18rem 0.5rem;
+  cursor: pointer;
+  transition: all 0.13s;
+}
+
+.tag-suggestion:hover {
+  color: #f472b6;
+  border-color: rgba(244, 114, 182, 0.4);
+  background: rgba(244, 114, 182, 0.06);
 }
 
 #view-stats {
@@ -926,4 +1043,6 @@ header {
 }
 .job-card {
   animation: fadeUp 0.25s ease-out both;
-}/*# sourceMappingURL=style.css.map */
+}
+
+/*# sourceMappingURL=style.css.map */

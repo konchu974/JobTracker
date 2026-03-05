@@ -6,15 +6,18 @@ Outil Kanban de suivi de candidatures — construit en HTML/CSS/JS vanilla, sans
 
 ![Kanban board avec 5 colonnes : Repéré, Postulé, Entretien, Offre, Refus]
 
-JobTracker permet de centraliser et visualiser toutes ses candidatures en un coup d'œil, avec un système de rappels de relance et un dashboard de statistiques.
+JobTracker permet de centraliser et visualiser toutes ses candidatures en un coup d'œil, avec un système de rappels de relance, un dashboard de statistiques, et des outils d'import/export.
 
 ## Fonctionnalités
 
 - **Kanban 5 colonnes** — Repéré, Postulé, Entretien, Offre, Refus
 - **Drag & drop** — glisser une carte entre colonnes
 - **Ajouter / modifier / supprimer** — entreprise, poste, salaire, localisation, lien, notes, dates
+- **Tags personnalisés** — étiquettes libres sur chaque candidature (Remote, Priorité, Alternance...)
 - **Rappels de relance** — badge coloré selon l'urgence (en retard, dans 7 jours, OK)
 - **Dashboard stats** — taux de réponse, entonnoir de candidature, relances à venir
+- **Export CSV** — télécharger toutes ses candidatures en fichier Excel-compatible
+- **Import CSV** — recharger un export ou importer depuis Excel, avec choix fusion/remplacement
 - **Persistance** — données sauvegardées en localStorage, aucun compte requis
 
 ## Stack technique
@@ -23,7 +26,7 @@ JobTracker permet de centraliser et visualiser toutes ses candidatures en un cou
 |---|---|
 | HTML5 sémantique | Structure (header, section, article) |
 | CSS / SCSS | Variables, Flexbox, Grid, animations |
-| JavaScript vanilla | DOM, événements, localStorage, Drag & Drop API |
+| JavaScript vanilla | DOM, événements, localStorage, Drag & Drop API, FileReader API |
 | Google Fonts | Fraunces, Plus Jakarta Sans, JetBrains Mono |
 | localStorage | Persistance des données côté client |
 
@@ -32,7 +35,7 @@ JobTracker permet de centraliser et visualiser toutes ses candidatures en un cou
 ```
 jobtracker/
 ├── index.html          # Structure HTML
-├── app.js              # Logique JS (render, modal, drag & drop, stats)
+├── app.js              # Logique JS (render, modal, drag & drop, stats, CSV, tags)
 ├── icons/              # Icônes SVG
 │   ├── delete-svgrepo-com.svg
 │   └── update-svgrepo-com.svg
@@ -75,4 +78,3 @@ Ou utilise l'extension **Live Sass Compiler** dans VS Code.
 
 Le projet est déployé sur GitHub Pages :
 **[https://konchu974.github.io/jobtracker](https://konchu974.github.io/jobtracker)**
-
